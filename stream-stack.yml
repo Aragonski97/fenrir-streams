@@ -1,0 +1,28 @@
+<stream name>:
+  image: <image_name / docker repo>
+  ports:
+    - "60001:50000"
+  configs:
+    - source: <name_of_your_swarm_config>
+      target: /code/app/.env  # this is where the pydantic settings expect it
+  deploy:
+    mode: replicated
+    replicas: 1
+    resources:
+      limits:
+        cpus: "<designated_cpu_limit (0, 1]>"
+        memory: "<designated_memory limit (0, float]>"
+      reservations:
+        cpus: "<reserve_cpu_resources (0,1]>"  # has to be less than available CPU cores
+        memory: "<reserve_memory_resources (0, float]>"  # has to be less than available memory
+    restart_policy:
+      condition: none
+    update_config:
+      order: start-first
+      parallelism: 1
+      delay: 10s
+      failure_action: rollback
+      monitor: 30s
+
+
+# add networks, secrets and volumes where needed

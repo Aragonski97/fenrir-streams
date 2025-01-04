@@ -1,0 +1,27 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+structlog = "*"
+fastapi = "*"
+uvicorn = "*"
+sqlalchemy = "*"
+asyncmy = "*"
+confluent-kafka = "*"
+pydantic = "*"
+pydantic-settings = "*"
+fastavro = "*"
+pandas = "*"
+numpy = "*"
+requests = "*"
+apscheduler = "*"
+sentry-sdk = "*"
+python-logstash = "*"
+asyncpg = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"
